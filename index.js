@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-
+//SteveBot is awesome
 client.once('ready', () => {
 	console.log('Ready!');
 });
