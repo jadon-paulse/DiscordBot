@@ -1,15 +1,23 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-//SteveBot is awesome
+const { prefix, token } = require('./config.json');
+// SteveBot is awesome
 client.once('ready', () => {
 	console.log('Ready!');
 });
 
 client.on('message', message => {
-	if (message.content === '!ping') {
-		// send back "Pong." to then channel the message was sent in
+	if (message.content.startsWith(`${prefix}ping`)) {
 		message.channel.send('Pong.');
 	}
+	else if (message.content.startsWith(`${prefix}beep`)) {
+		message.channel.send('Boop.');
+	}
+	else if(message.content.startsWith(`${prefix}games`)) {
+		message.channel.send('https://www.pcgamer.com/');
+	}
+	else if (message.content === `${prefix}server`) {
+		message.channel.send(`This server's name is: ${message.guild.name}\nTotal members: ${message.guild.memberCount}`);
+	}
 });
-
-client.login('NjQzNTY2MDUxNjUyNTM0Mjgz.XcnYCw._gepuJYyre_F2LNEsKZdgj2VJVQ');
+client.login(token);
